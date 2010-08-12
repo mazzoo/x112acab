@@ -1,0 +1,12 @@
+x112acab - a daemon that can record x11 output in the basic format used
+for ACAB (all colors are beautiful) in Puerto Giesing.
+
+start the daemon x112acab, then echo the XID to record in hex to the
+daemon's fifo /tmp/x112acab.fifo
+
+I did patch my xscreensaver but it's actually not required.
+--debug prints out the required xwindow-id. do sth like:
+
+xscreensaver-demo --debug 2>&1 | sed -nu 's/^.*XSCREENSAVER_WINDOW=\(0x[a-fA-F0-9]*\)/\1/p' > /tmp/x112acab.fifo
+
+ - mazzoo
